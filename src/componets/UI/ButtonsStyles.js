@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 
+import { media } from '../../styles/GlobalStyles';
+
 export const Button = styled.button`
   font-family: inherit;
   border: none;
-  transition: all 0.3s ease;
-  border-radius: 4rem;
+  transition: transform 0.3s ease;
+  border-radius: 2.6rem;
   cursor: pointer;
   font-weight: inherit;
 
   &:active {
-    transform: ${(props) => (props.isActive ? 'none' : 'scale(0.98)')};
+    transform: ${(props) => (props['aria-pressed'] ? 'none' : 'scale(0.98)')};
   }
 
   &.menuBtnBig {
@@ -22,6 +24,11 @@ export const Button = styled.button`
     &:hover {
       background-color: var(--color-sun-hover);
     }
+
+    ${media.phone} {
+      font-size: var(--font-size-body);
+      padding: 1.2rem 0;
+    }
   }
 
   &.menuBtnSection {
@@ -29,7 +36,7 @@ export const Button = styled.button`
     width: 100%;
     color: var(--color-alabaster);
     background-color: ${(props) =>
-      props.isActive
+      props['aria-pressed']
         ? 'var(--color-pickled-bluewood)'
         : 'var(--color-jungle-mist)'};
     padding: 1rem 0;
@@ -42,9 +49,13 @@ export const Button = styled.button`
 
     &:hover {
       background-color: ${(props) =>
-        props.isActive
+        props['aria-pressed']
           ? 'var(--color-pickled-bluewood)'
           : 'var(--color-hippie-blue)'};
+    }
+
+    ${media.phone} {
+      font-size: var(--font-size-heading-s-mobile);
     }
   }
 
@@ -58,6 +69,10 @@ export const Button = styled.button`
 
     &:hover {
       background-color: var(--color-sun-hover);
+    }
+
+    ${media.phone} {
+      font-size: var(--font-size-heading-s-mobile);
     }
   }
 

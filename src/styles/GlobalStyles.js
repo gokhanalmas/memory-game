@@ -20,6 +20,10 @@ const GlobalStyles = createGlobalStyle`
           --font-size-heading-m: 32px;
           --font-size-heading-s: 26px;
           --font-size-heading-xs: 20px;
+
+
+          --font-size-heading-xs-mobile: 15px;
+          --font-size-heading-s-mobile:16px;
          
           --font-size-body: 18px;
 
@@ -81,5 +85,11 @@ const GlobalStyles = createGlobalStyle`
         
        
 `;
+
+const customMediaQuery = (maxWidth) => `@media (max-width: ${maxWidth}px)`;
+
+export const media = {
+  phone: customMediaQuery(600),
+};
 
 export default GlobalStyles;

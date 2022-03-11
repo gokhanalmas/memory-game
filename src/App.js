@@ -1,19 +1,19 @@
 import GlobalStyles from './styles/GlobalStyles';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import Settings from './pages/Settings';
-import Game from './pages/Game';
+import { Main } from './styles/Styles';
+
+import SettingsContent from './componets/settings/Settings';
+import Game from './componets/game/Game';
 
 function App() {
+  const { gameIsRunning } = useSelector((state) => state.memory);
   return (
     <>
       <GlobalStyles />
-
-      <Routes>
-        <Route path={'/'} element={<Navigate to="/settings" />} />
-        <Route path={'/settings'} element={<Settings />} />
-        <Route path={'/game'} element={<Game />} />
-      </Routes>
+      <Main game={gameIsRunning}>
+        {gameIsRunning ? <Game /> : <SettingsContent />}
+      </Main>
     </>
   );
 }
