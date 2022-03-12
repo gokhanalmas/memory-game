@@ -1,10 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
-
-const findEmptyInd = (board) => {
-  return board
-    .map((item, ind) => (item === null ? ind : ''))
-    .filter((item) => typeof item === 'number');
-};
+import { generateBoard } from '../helpers';
+import { setPlayers } from '../helpers';
 
 const initialState = {
   isModalOpen: false,
@@ -15,6 +11,7 @@ const initialState = {
   gameBoard: [],
   chosenCards: [],
   matchCards: [],
+  players: [],
 };
 
 const memoryGameSlice = createSlice({
@@ -28,22 +25,29 @@ const memoryGameSlice = createSlice({
     },
     startGame(state) {
       state.gameIsRunning = true;
-      state.gameBoard = new Array(Math.pow(state.grid, 2)).fill(1);
+      const theme = state.theme;
+      const grid = parseInt(state.grid);
+      const numOfPlayers = state.numOfPlayers;
+      state.gameBoard = generateBoard(grid, theme);
+      state.players = setPlayers(numOfPlayers);
     },
     newGame(state) {
       state.gameIsRunning = false;
     },
     restart(state) {
-      console.log('restart');
+      const theme = state.theme;
+      const grid = parseInt(state.grid);
+      state.gameBoard = generateBoard(grid, theme);
     },
     toggleModal(state) {
       state.isModalOpen = !state.isModalOpen;
     },
-    updateChosenCArds(state, action) {
+    updateChosenCards(state, action) {
+      const data = action.payload;
       if (state.chosenCards.length === 2) {
         return;
       }
-      const data = action.payload;
+
       state.chosenCards.push({ value: data.value, index: data.index });
     },
     resetChosenCards(state) {
@@ -53,6 +57,7 @@ const memoryGameSlice = createSlice({
 });
 
 export const memoryActions = memoryGameSlice.actions;
+export const playerMove = () => {};
 
 const store = configureStore({
   reducer: { memory: memoryGameSlice.reducer },

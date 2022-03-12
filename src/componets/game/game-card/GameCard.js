@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { memoryActions } from '../../../store';
+
+import { Icon } from '../../../helpers';
 
 import {
   GameCardBox,
@@ -12,10 +14,11 @@ import {
 
 const GameCard = ({ grid, index, value }) => {
   const dispatch = useDispatch();
-  const { chosenCards } = useSelector((state) => state.memory);
+  const { chosenCards, theme } = useSelector((state) => state.memory);
 
   const cardClickHandler = () => {
-    dispatch(memoryActions.updateChosenCArds({ index, value }));
+    if (chosenCards.some((card) => card.index === index)) return;
+    dispatch(memoryActions.updateChosenCards({ index, value }));
   };
 
   //   useEffect(() => {
@@ -36,7 +39,10 @@ const GameCard = ({ grid, index, value }) => {
     >
       <GameCardInner className="inner">
         <GameCardFront />
-        <GameCardBack size={grid}>{<p>{value}</p>}</GameCardBack>
+        <GameCardBack size={grid}>
+          {theme === 'numbers' && <p>{value}</p>}
+          {theme === 'icons' && <Icon name={value} fill={'#FCFCFC'} />}
+        </GameCardBack>
       </GameCardInner>
     </GameCardBox>
   );

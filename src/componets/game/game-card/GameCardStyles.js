@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const GameCardBox = styled.div`
   background-color: transparent;
@@ -56,5 +56,10 @@ export const GameCardBack = styled.div`
       props.size === '4'
         ? 'var(--font-size-number-4x4)'
         : 'var(--font-size-number-6x6)'};
+  }
+
+  svg {
+    width: ${(props) => (props.size === '4' ? '5.6rem' : '4rem')};
+    height: ${(props) => (props.size === '4' ? '5.6rem' : '4rem')};
   }
 `;
