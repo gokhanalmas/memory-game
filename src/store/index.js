@@ -3,6 +3,7 @@ import { generateBoard } from '../helpers';
 import { setPlayers } from '../helpers';
 
 const initialState = {
+  timerIdRunnig: false,
   isModalOpen: false,
   gameIsRunning: false,
   theme: 'numbers',
@@ -33,11 +34,13 @@ const memoryGameSlice = createSlice({
     },
     newGame(state) {
       state.gameIsRunning = false;
+      state.chosenCards = [];
     },
     restart(state) {
       const theme = state.theme;
       const grid = parseInt(state.grid);
       state.gameBoard = generateBoard(grid, theme);
+      state.chosenCards = [];
     },
     toggleModal(state) {
       state.isModalOpen = !state.isModalOpen;
@@ -48,16 +51,73 @@ const memoryGameSlice = createSlice({
         return;
       }
 
-      state.chosenCards.push({ value: data.value, index: data.index });
+      state.chosenCards = state.chosenCards.concat({
+        value: data.value,
+        index: data.index,
+      });
     },
     resetChosenCards(state) {
       state.chosenCards = [];
+    },
+    changeCardStatus(state, action) {
+      const ind = action.payload.ind;
+      const neWstatus = action.payload.status;
+      state.gameBoard[ind].status = neWstatus;
     },
   },
 });
 
 export const memoryActions = memoryGameSlice.actions;
-export const playerMove = () => {};
+
+export const playerMove = (move) => {
+  return (dispatch) => {
+    dispatch(memoryActions.updateChosenCards(move));
+    dispatch(
+      memoryActions.changeCardStatus({ ind: move.index, status: 'flipped' })
+    );
+  };
+};
+
+export const checkForMatch = (cards) => {
+  return (dispatch) => {
+    const firstCard = cards[0];
+    const secondCard = cards[1];
+
+    if (firstCard.value === secondCard.value) {
+      setTimeout(() => {
+        cards.forEach((card) =>
+          dispatch(
+            memoryActions.changeCardStatus({
+              ind: card.index,
+              status: 'matched',
+            })
+          )
+        );
+      }, 400);
+      setTimeout(() => {
+        cards.forEach((card) =>
+          dispatch(
+            memoryActions.changeCardStatus({
+              ind: card.index,
+              status: 'flipped',
+            })
+          )
+        );
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        cards.forEach((card) =>
+          dispatch(
+            memoryActions.changeCardStatus({ ind: card.index, status: '' })
+          )
+        );
+      }, 1000);
+    }
+    setTimeout(() => {
+      dispatch(memoryActions.resetChosenCards());
+    }, 1050);
+  };
+};
 
 const store = configureStore({
   reducer: { memory: memoryGameSlice.reducer },

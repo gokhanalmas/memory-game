@@ -35,11 +35,11 @@ export const generateBoard = (size, theme) => {
   let board = [];
   for (let i = 0; i < Math.pow(size, 2) / 2; i++)
     if (theme === 'numbers') {
-      board.push(i);
-      board.push(i);
+      board.push({ value: i, status: '' });
+      board.push({ value: i, status: '' });
     } else {
-      board.push(iconsName[i]);
-      board.push(iconsName[i]);
+      board.push({ value: iconsName[i], status: '' });
+      board.push({ value: iconsName[i], status: '' });
     }
 
   return shuffleCards(board);
@@ -72,7 +72,7 @@ function useDynamicSVGImport(name, options = {}) {
         ImportedIconRef.current = (
           await import(`../assets/${name}.svg`)
         ).ReactComponent;
-        console.log(ImportedIconRef.current);
+
         if (onCompleted) {
           onCompleted(name, ImportedIconRef.current);
         }

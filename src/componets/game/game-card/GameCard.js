@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { memoryActions } from '../../../store';
+
+import { playerMove } from '../../../store';
 
 import { Icon } from '../../../helpers';
 
@@ -12,34 +13,26 @@ import {
   GameCardBack,
 } from './GameCardStyles';
 
-const GameCard = ({ grid, index, value }) => {
+const GameCard = ({ grid, index, value, status }) => {
   const dispatch = useDispatch();
   const { chosenCards, theme } = useSelector((state) => state.memory);
 
   const cardClickHandler = () => {
-    if (chosenCards.some((card) => card.index === index)) return;
-    dispatch(memoryActions.updateChosenCards({ index, value }));
+    if (status || chosenCards.length === 2) return;
+
+    dispatch(playerMove({ index, value }));
   };
-
-  //   useEffect(() => {
-  //     if (chosenCards.length === 2) {
-  //       let timer = setTimeout(dispatch(memoryActions.resetChosenCards()), 10000);
-  //       return () => clearTimeout(timer);
-  //     }
-  //   }, [chosenCards]);
-
-  const isActive = chosenCards.some((card) => card.index === index);
 
   return (
     <GameCardBox
       size={grid}
-      className={isActive && 'active'}
+      status={status}
       data-value={value}
       onClick={cardClickHandler}
     >
       <GameCardInner className="inner">
         <GameCardFront />
-        <GameCardBack size={grid}>
+        <GameCardBack size={grid} status={status}>
           {theme === 'numbers' && <p>{value}</p>}
           {theme === 'icons' && <Icon name={value} fill={'#FCFCFC'} />}
         </GameCardBack>

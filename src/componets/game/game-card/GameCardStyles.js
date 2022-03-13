@@ -1,4 +1,6 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { media } from '../../../styles/GlobalStyles';
 
 export const GameCardBox = styled.div`
   background-color: transparent;
@@ -9,8 +11,17 @@ export const GameCardBox = styled.div`
   perspective: 1000px;
   cursor: pointer;
 
-  &.active .inner {
-    transform: rotateY(180deg);
+  ${(props) =>
+    (props.status === 'flipped' || props.status === 'matched') &&
+    css`
+      .inner {
+        transform: rotateY(180deg);
+      }
+    `}
+
+  ${media.phone} {
+    width: ${(props) => (props.size === '4' ? '7.25rem' : '4.7rem')};
+    height: ${(props) => (props.size === '4' ? '7.25rem' : '4.7rem')};
   }
 `;
 
@@ -43,7 +54,10 @@ export const GameCardBack = styled.div`
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background-color: var(--color-jungle-mist);
+  background-color: ${(props) =>
+    props.status === 'matched'
+      ? 'var(--color-sun)'
+      : 'var(--color-jungle-mist)'};
   color: white;
   display: flex;
   justify-content: center;
@@ -61,5 +75,16 @@ export const GameCardBack = styled.div`
   svg {
     width: ${(props) => (props.size === '4' ? '5.6rem' : '4rem')};
     height: ${(props) => (props.size === '4' ? '5.6rem' : '4rem')};
+  }
+
+  ${media.phone} {
+    p {
+      font-size: ${(props) => (props.size === '4' ? '4rem' : '2.4rem')};
+    }
+
+    svg {
+      width: ${(props) => (props.size === '4' ? '3rem' : '2rem')};
+      height: ${(props) => (props.size === '4' ? '3rem' : '2rem')};
+    }
   }
 `;
