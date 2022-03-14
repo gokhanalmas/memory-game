@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import GameCard from '../game-card/GameCard';
-import { checkForMatch } from '../../../store';
+import { checkForMatch, memoryActions } from '../../../store';
 
 import { GridWrapper } from './GameGridStyles';
 
@@ -13,9 +13,15 @@ const GameGrid = () => {
   useEffect(() => {
     if (chosenCards.length === 2) {
       dispatch(checkForMatch(chosenCards));
-      console.log('click');
     }
   }, [chosenCards, dispatch]);
+
+  useEffect(() => {
+    const isGameFinished = gameBoard.every((card) => card.status === 'matched');
+    if (isGameFinished) {
+      dispatch(memoryActions.updateGameStatus(true));
+    }
+  }, [gameBoard, dispatch]);
   return (
     <GridWrapper grid={grid}>
       {gameBoard.map((card, ind) => (

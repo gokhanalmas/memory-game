@@ -51,7 +51,7 @@ const GlobalStyles = createGlobalStyle`
             font-size: var(--font-size-heading-l) ;
         }
 
-        h2{font-size: var(--font-size-heading-m) ;}
+        h2{font-size: var(--font-size-heading-m)}
 
         h3{
             font-size: var(--font-size-heading-xs) ;
@@ -79,16 +79,25 @@ const GlobalStyles = createGlobalStyle`
           width: 100%;
           
         }
+  
+        #overlays{
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          min-height: 100vh;
+          
+        }
 
 
-        
-        
-       
 `;
 
 const customMediaQuery = (maxWidth) => `@media (max-width: ${maxWidth}px)`;
 
 export const media = {
+  tablet: customMediaQuery(850),
   phone: customMediaQuery(600),
 };
 

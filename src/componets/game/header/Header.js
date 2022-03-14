@@ -31,6 +31,7 @@ const Header = () => {
 
   const menuHandler = () => {
     dispatch(memoryActions.toggleModal());
+    dispatch(memoryActions.stopTimer());
   };
 
   return (

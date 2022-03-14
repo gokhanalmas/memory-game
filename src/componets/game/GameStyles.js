@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { media } from '../../styles/GlobalStyles';
-
 export const GameWrapper = styled.section`
   max-width: 111rem;
   width: 100%;

@@ -53,7 +53,7 @@ export const setPlayers = (numOfPlayers) => {
     return players;
   }
   for (let i = 1; i <= num; i++) {
-    players.push({ name: `Player ${i}`, score: 0 });
+    players.push({ playerNum: i, score: 0 });
   }
 
   return players;

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { media } from '../../styles/GlobalStyles';
 
@@ -74,6 +74,12 @@ export const Button = styled.button`
     ${media.phone} {
       font-size: var(--font-size-heading-s-mobile);
     }
+
+    ${(props) =>
+      props.modal &&
+      css`
+        max-width: 100%;
+      `}
   }
 
   &.btnSecondary {
@@ -88,5 +94,15 @@ export const Button = styled.button`
       background-color: var(--color-hippie-blue);
       color: var(--color-alabaster);
     }
+
+    ${media.phone} {
+      font-size: var(--font-size-heading-s-mobile);
+    }
+
+    ${(props) =>
+      props.modal &&
+      css`
+        max-width: 100%;
+      `}
   }
 `;

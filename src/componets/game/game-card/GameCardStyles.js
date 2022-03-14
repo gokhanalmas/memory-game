@@ -49,15 +49,13 @@ export const GameCardFront = styled.div`
   }
 `;
 
-export const GameCardBack = styled.div`
+export const GameCardBack = styled.button`
   position: absolute;
+  border: none;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  background-color: ${(props) =>
-    props.status === 'matched'
-      ? 'var(--color-sun)'
-      : 'var(--color-jungle-mist)'};
+  background-color: var(--color-sun);
   color: white;
   display: flex;
   justify-content: center;
@@ -87,4 +85,11 @@ export const GameCardBack = styled.div`
       height: ${(props) => (props.size === '4' ? '3rem' : '2rem')};
     }
   }
+
+  ${(props) =>
+    props.status === 'matched' &&
+    css`
+      background-color: var(--color-jungle-mist);
+      }
+    `}
 `;

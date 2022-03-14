@@ -10,6 +10,7 @@ const Game = () => {
     <GameWrapper>
       <Header />
       <GameGrid />
+      <Footer />
     </GameWrapper>
   );
 };

@@ -1,9 +1,7 @@
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-
 import { playerMove } from '../../../store';
-
 import { Icon } from '../../../helpers';
 
 import {
