@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub](https://your-solution-url.com)
+- Solution URL: [GitHub](https://github.com/aleksFedotov/memory-game)
 - Live Site URL: [memory-game](https://aleksfedotov.github.io/memory-game)
 
 ## My process
@@ -44,7 +44,7 @@ Users should be able to:
 - Desktop-first workflow
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
-- [Framer-motion](https://www.framer.com/motion/)
+- [Framer-motion](https://www.framer.com/motion/) - For animation
 
 ## Author
 
