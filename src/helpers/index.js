@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const iconsName = [
+const iconsNames = [
   'anchor',
   'apple',
   'biohazard',
@@ -38,8 +38,8 @@ export const generateBoard = (size, theme) => {
       board.push({ value: i, status: '' });
       board.push({ value: i, status: '' });
     } else {
-      board.push({ value: iconsName[i], status: '' });
-      board.push({ value: iconsName[i], status: '' });
+      board.push({ value: iconsNames[i], status: '' });
+      board.push({ value: iconsNames[i], status: '' });
     }
 
   return shuffleCards(board);
@@ -57,6 +57,23 @@ export const setPlayers = (numOfPlayers) => {
   }
 
   return players;
+};
+
+export const getMultiModeResult = (playesData) => {
+  const sortedPlayers = [...playesData].sort((a, b) => b.score - a.score);
+  const max = Math.max.apply(
+    Math,
+    sortedPlayers.map((player) => player.score)
+  );
+
+  const result = sortedPlayers.map((player) => ({
+    ...player,
+    isWinner: player.score === max,
+  }));
+
+  const isTies = result.filter((player) => player.isWinner).length > 1;
+
+  return { result, isTies };
 };
 
 function useDynamicSVGImport(name, options = {}) {

@@ -7,6 +7,10 @@ export const ModalContentWrapper = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${(props) => (props.type === 'menu' ? '1.6rem' : '4rem')};
+
+  ${media.phone} {
+    gap: 2.4rem;
+  }
 `;
 
 export const ResultHeading = styled.p`
@@ -14,12 +18,20 @@ export const ResultHeading = styled.p`
   color: var(----color-big-stone);
   text-align: center;
   margin-bottom: 1.6rem;
+
+  ${media.phone} {
+    font-size: 2.4rem;
+  }
 `;
 
 export const ResultText = styled.p`
   font-size: var(--font-size-body);
   color: var(--color-gothic);
   text-align: center;
+
+  ${media.phone} {
+    font-size: 1.4rem;
+  }
 `;
 
 export const ResultList = styled.ul`
@@ -30,7 +42,7 @@ export const ResultList = styled.ul`
 `;
 export const ResultListItem = styled.li`
   width: 100%;
-  padding: 2.5rem 3.2rem;
+  padding: 1.6rem 3.2rem;
   border-radius: 1rem;
   display: flex;
   justify-content: space-between;
@@ -51,7 +63,18 @@ export const ResultListItem = styled.li`
     font-size: var(--font-size-body);
     color: ${(props) =>
       props.isWinner ? 'var(--color-alabaster)' : 'var(--color-gothic)'};
-    
+  }
+  
+  ${media.phone} {
+    padding: 1.2rem 1.6rem;
+    h2 {
+    font-size: 2rem; 
+    }
+
+    p {
+   font-size: 1.3rem;
+    }
+  
 `;
 
 export const ResultBtnWrapper = styled.div`

@@ -62,6 +62,7 @@ export const GameCardBack = styled.button`
   align-items: center;
   transform: rotateY(180deg);
   border-radius: 50%;
+  font-family: inherit;
 
   p {
     font-size: ${(props) =>

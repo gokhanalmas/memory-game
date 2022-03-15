@@ -2,6 +2,7 @@ import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { memoryActions } from '../../store';
+import { getMultiModeResult } from '../../helpers';
 
 import {
   ModalContentWrapper,
@@ -18,17 +19,8 @@ const ResultModalContent = () => {
   const dispatch = useDispatch();
   const { numOfPlayers, players } = useSelector((state) => state.memory);
 
-  let header = 'Player 3 Wins!';
-  if (numOfPlayers === '1') {
-    header = ' You did it!';
-  }
-
-  let resultListItems = players.map((player) => (
-    <ResultListItem key={player.playerNum} isWinner={true}>
-      <p>Player {player.playerNum}</p>
-      <h2>{player.score} Pairs</h2>
-    </ResultListItem>
-  ));
+  let resultListItems;
+  let header = 'You did it!';
 
   if (numOfPlayers === '1') {
     const { moves, time } = players[0];
@@ -47,14 +39,26 @@ const ResultModalContent = () => {
         <h2>{moves} Moves</h2>
       </ResultListItem>,
     ];
+  } else {
+    const { result, isTies } = getMultiModeResult(players);
+    console.log(result, isTies);
+    header = isTies ? 'It’s a tie!' : `Player ${result[0].playerNum} Wins!`;
+    resultListItems = result.map((player) => (
+      <ResultListItem key={player.playerNum} isWinner={player.isWinner}>
+        <p>Player {player.playerNum}</p>
+        <h2>{player.score} Pairs</h2>
+      </ResultListItem>
+    ));
   }
 
   const restartGameHandler = () => {
     dispatch(memoryActions.restart());
+    dispatch(memoryActions.toggleModal());
   };
 
   const newGameHandler = () => {
     dispatch(memoryActions.newGame());
+    dispatch(memoryActions.toggleModal());
   };
 
   return (

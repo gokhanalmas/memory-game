@@ -27,6 +27,7 @@ const GameCard = ({ grid, index, value, status }) => {
       status={status}
       data-value={value}
       onClick={cardClickHandler}
+      role="button"
     >
       <GameCardInner className="inner">
         <GameCardFront />

@@ -16,6 +16,10 @@ export const SettingsWrapper = styled.section`
     color: var(--color-alabaster);
     font-size: 4rem;
   }
+
+  ${media.phone} {
+    gap: 4.5rem;
+  }
 `;
 
 export const SettingsCard = styled.div`

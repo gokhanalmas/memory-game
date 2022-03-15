@@ -5,10 +5,5 @@ export const Main = styled.main`
   min-height: inherit;
   background-color: ${(props) =>
     props.game ? 'var(--color-alabaster)' : 'var(--color-big-stone)'};
-
-  padding: 4.3rem;
-
-  @media (max-width: 480px) {
-    padding: 2.4rem;
-  }
+  padding: 2.4rem;
 `;

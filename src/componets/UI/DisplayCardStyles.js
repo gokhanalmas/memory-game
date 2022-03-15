@@ -6,7 +6,7 @@ export const DisplayCard = styled.div`
   position: relative;
   max-width: 25.5rem;
   width: 100%;
-  padding: 2rem;
+  padding: 1.6rem 2.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +51,7 @@ export const DisplayCard = styled.div`
     font-size: 1.3rem;
     position: absolute;
     text-align: center;
-    bottom: -3.5rem;
+    bottom: -2.5rem;
     left: 0;
     transition: all 0.4s ease;
   }

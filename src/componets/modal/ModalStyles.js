@@ -26,7 +26,6 @@ export const ModalOverlayWrapper = styled(motion.div)`
 `;
 
 export const ContentWrapper = styled.div`
-  margin-top: 15.4rem;
   max-width: 65rem;
   width: 100%;
   border-radius: 2rem;
