@@ -2,8 +2,6 @@ import React, { Fragment } from 'react';
 
 import { createPortal } from 'react-dom';
 
-import Settings from '../settings/Settings';
-
 import {
   BackDropWrapper,
   ModalOverlayWrapper,
