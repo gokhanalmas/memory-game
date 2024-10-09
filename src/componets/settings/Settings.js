@@ -34,10 +34,10 @@ const SettingsContent = () => {
 
   return (
     <SettingsWrapper>
-      <p className="logo">memory</p>
+      <p className="logo">hafıza</p>
       <SettingsCard>
         <SettingsSelectionWrapper>
-          <h3>Select Theme</h3>
+          <h3>Temayı Seç</h3>
 
           <SettingsBtnWrapper size="big">
             <Button
@@ -47,7 +47,7 @@ const SettingsContent = () => {
               aria-pressed={theme === 'numbers'}
               onClick={updateSettingsHandler}
             >
-              Numbers
+              Sayılar
             </Button>
             <Button
               className="menuBtnSection"
@@ -56,12 +56,12 @@ const SettingsContent = () => {
               aria-pressed={theme === 'icons'}
               onClick={updateSettingsHandler}
             >
-              Icons
+              Simgeler
             </Button>
           </SettingsBtnWrapper>
         </SettingsSelectionWrapper>
         <SettingsSelectionWrapper>
-          <h3>Number of Players</h3>
+          <h3>Oyuncu Sayısı</h3>
           <SettingsBtnWrapper size="small">
             <Button
               className="menuBtnSection small"
@@ -102,7 +102,7 @@ const SettingsContent = () => {
           </SettingsBtnWrapper>
         </SettingsSelectionWrapper>
         <SettingsSelectionWrapper>
-          <h3>Grid Size</h3>
+          <h3>Izgara Boyutu</h3>
           <SettingsBtnWrapper size="big">
             <Button
               className="menuBtnSection"
@@ -120,12 +120,12 @@ const SettingsContent = () => {
               aria-pressed={grid === '6'}
               onClick={updateSettingsHandler}
             >
-              6X6
+              6x6
             </Button>
           </SettingsBtnWrapper>
         </SettingsSelectionWrapper>
         <Button className="menuBtnBig" onClick={startGameHandler}>
-          Start Game
+          Oyunu Başlat
         </Button>
       </SettingsCard>
     </SettingsWrapper>

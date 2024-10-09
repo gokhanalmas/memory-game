@@ -41,7 +41,7 @@ export const DisplayCard = styled.div`
   }
 
   &::before {
-    content: 'CURRENT TURN';
+    content: 'Şu Anki Sıra';
     opacity: 0;
     font-family: inherit;
     color: var(--color-big-stone);

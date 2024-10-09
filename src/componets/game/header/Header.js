@@ -36,21 +36,21 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
-      <Logo>memory</Logo>
+      <Logo>hafıza</Logo>
       <ButtonsWrapper>
         {windowWidth > 600 && (
           <>
             <Button className="btnPrimary" onClick={restartHandler}>
-              Restart
+              Tekrar
             </Button>
             <Button className="btnSecondary" onClick={newGameHandler}>
-              New Game
+              Yeni Oyun
             </Button>
           </>
         )}
         {windowWidth <= 600 && (
           <Button className="btnPrimary" onClick={menuHandler}>
-            Menu
+            Menü
           </Button>
         )}
       </ButtonsWrapper>

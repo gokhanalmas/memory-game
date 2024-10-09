@@ -25,13 +25,13 @@ const MenuModalContent = () => {
   return (
     <ModalContentWrapper type="menu">
       <Button className="btnPrimary" modal={true} onClick={restartHandler}>
-        Restart
+        Tekrar
       </Button>
       <Button className="btnSecondary" modal={true} onClick={newGameHandler}>
-        New Game
+        Yeni Oyun
       </Button>
       <Button className="btnSecondary" modal={true} onClick={resumeGameHandler}>
-        Resume Game
+        Oyuna Devam Et
       </Button>
     </ModalContentWrapper>
   );

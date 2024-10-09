@@ -40,13 +40,13 @@ const SingleModeDisplay = () => {
   return (
     <ModeWrapper>
       <DisplayCard mode="solo">
-        <p>Time</p>
+        <p>Süre</p>
         <h2>
           {minutes}:{seconds.toString().padStart(2, '0')}
         </h2>
       </DisplayCard>
       <DisplayCard mode="solo">
-        <p>Moves</p>
+        <p>Hamleler</p>
         <h2>{playerData.moves}</h2>
       </DisplayCard>
     </ModeWrapper>

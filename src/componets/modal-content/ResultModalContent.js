@@ -20,7 +20,7 @@ const ResultModalContent = () => {
   const { numOfPlayers, players } = useSelector((state) => state.memory);
 
   let resultListItems;
-  let header = 'You did it!';
+  let header = 'Başardın!';
 
   if (numOfPlayers === '1') {
     const { moves, time } = players[0];
@@ -29,24 +29,24 @@ const ResultModalContent = () => {
 
     resultListItems = [
       <ResultListItem key="time">
-        <p>Time Elapsed</p>
+        <p>Geçen Süre</p>
         <h2>
           {minutes}:{seconds.toString().padStart(2, '0')}
         </h2>
       </ResultListItem>,
       <ResultListItem key="moves">
-        <p>Moves Taken</p>
-        <h2>{moves} Moves</h2>
+        <p>Yapılan Hamleler</p>
+        <h2>{moves} Hamle</h2>
       </ResultListItem>,
     ];
   } else {
     const { result, isTies } = getMultiModeResult(players);
     console.log(result, isTies);
-    header = isTies ? 'It’s a tie!' : `Player ${result[0].playerNum} Wins!`;
+    header = isTies ? 'Berabere!' : `Oyuncu ${result[0].playerNum} Kazandı!`;
     resultListItems = result.map((player) => (
       <ResultListItem key={player.playerNum} isWinner={player.isWinner}>
-        <p>Player {player.playerNum}</p>
-        <h2>{player.score} Pairs</h2>
+        <p>Oyuncu {player.playerNum}</p>
+        <h2>{player.score} Çift</h2>
       </ResultListItem>
     ));
   }
@@ -67,8 +67,8 @@ const ResultModalContent = () => {
         <ResultHeading>{header}</ResultHeading>
         <ResultText>
           {numOfPlayers === '1'
-            ? 'Game over! Here’s how you got on…'
-            : 'Game over! Here are the results…'}
+            ? 'Oyun bitti! İşte nasıl ilerlediğin...'
+            : 'Oyun bitti! İşte sonuçlar...'}
         </ResultText>
       </div>
       <ResultList>{resultListItems}</ResultList>
@@ -78,10 +78,10 @@ const ResultModalContent = () => {
           modal={true}
           onClick={restartGameHandler}
         >
-          Restart
+          Tekrar
         </Button>
         <Button className="btnSecondary" modal={true} onClick={newGameHandler}>
-          Setup New Game
+          Yeni Oyun Ayarla
         </Button>
       </ResultBtnWrapper>
     </ModalContentWrapper>

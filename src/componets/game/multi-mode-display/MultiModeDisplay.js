@@ -30,9 +30,9 @@ const MultiModeDisplay = () => {
           mode="multi"
         >
           {windowWidth > 600 ? (
-            <p>Player {player.playerNum}</p>
+            <p>Oyuncu {player.playerNum}</p>
           ) : (
-            <p>P{player.playerNum}</p>
+            <p>O{player.playerNum}</p>
           )}
           <h2>{player.score}</h2>
         </DisplayCard>
